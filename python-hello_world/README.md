@@ -1,4 +1,4 @@
-# 🎓 Python - Hello, World
+# 🐍 Python - Hello, World
 
 ## Learning Objectives
 - How to use the Python interpreter
