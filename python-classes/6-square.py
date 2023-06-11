@@ -23,7 +23,7 @@ class Square:
             ValueError: If the size attribute is less than zero
         """
         self.__size = size
-        self.position = position
+        self.__position = position
         if type(self.__size) is not int:
             raise TypeError('size must be an integer')
         if self.__size < 0:
