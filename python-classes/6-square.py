@@ -26,7 +26,13 @@ class Square:
             raise TypeError("size must be an integer")
         elif size < 0:
             raise ValueError("size must be >= 0")
-        elif type(position) is not tuple or position[0] < 0 or position[1] < 0:
+        elif (
+            type(position) is not tuple
+            or type(position[0]) is not int
+            or type(position[1]) is not int
+            or position[0] < 0
+            or position[1] < 0
+        ):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__size = size
@@ -66,7 +72,7 @@ class Square:
         """Prints a square made of "#" characters with a size determined by
         the value of the private attribute "__size". If the size is set to 0,
         prints an empty line. Prints as many empty spaces as the first number
-        of position.
+        of position
         """
         if self.__size > 0:
             for i in range(self.__size):
@@ -89,7 +95,13 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if type(value) is not tuple or value[0] < 0 or value[1] < 0:
+        if (
+            type(value) is not tuple
+            or type(value[0]) is not int
+            or type(value[1]) is not int
+            or value[0] < 0
+            or value[1] < 0
+        ):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
