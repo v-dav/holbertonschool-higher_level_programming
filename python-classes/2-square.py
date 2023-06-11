@@ -9,11 +9,13 @@ class Square:
         a given size.
 
         Args:
-            size (int): represents the size of an object. It is used
-                in the initialization of an object's attributes. If the size
-                is not an integer or is less than zero, the code raises a
-                TypeError or ValueError, respectively. Otherwise, the size
-                is stored as a private attribute, defaults to 0 (optional)"""
+            size (int, optional): represents the size of an object.
+                Defaults to 0. It is used in the initialization of an object's
+                attributes is stored as a private attribute.
+        
+        Raises:
+            TypeError: If the size attribute is not an integer
+            ValueError: If the size attribute is less than zero"""
         if type(size) is not int:
             raise TypeError("size must be an integer")
         elif size < 0:
