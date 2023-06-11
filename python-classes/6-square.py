@@ -59,7 +59,6 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """kjhkjhkj kjhkjhk kjhkh"""
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -81,7 +80,6 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """kjhkjhkj kjhkjhk kjhkh"""
         if (
             type(value) is not tuple or len(value) < 2
             or type(value[0]) is not int or type(value[1]) is not int
