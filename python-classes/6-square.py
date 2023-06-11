@@ -72,10 +72,12 @@ class Square:
         prints an empty line. Prints as many empty spaces as the first number
         of position
         """
-        if self.__size > 0:
-            for i in range(self.__size):
-                print(" " * self.__position[0], end="")
-                print("#" * self.__size)
+        if self.__size == 0:
+            return print()
+
+        for i in range(self.__size):
+            print(" " * self.__position[0], end="")
+            print("#" * self.__size)
         else:
             print()
 
