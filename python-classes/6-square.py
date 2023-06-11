@@ -59,6 +59,7 @@ class Square:
 
     @size.setter
     def size(self, value):
+        """kjhkjhkj kjhkjhk kjhkh"""
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -80,6 +81,7 @@ class Square:
 
     @position.setter
     def position(self, value):
+        """kjhkjhkj kjhkjhk kjhkh"""
         if (
             type(value) is not tuple or len(value) < 2
             or type(value[0]) is not int or type(value[1]) is not int
@@ -90,11 +92,16 @@ class Square:
             self.__position = value
 
     def my_print(self):
-        self.my_print = self
+        """Prints a square made of "#" characters with a size determined by
+        the value of the private attribute "__size". If the size is set to 0,
+        prints an empty line. Prints as many empty spaces as the first number
+        of position
+        """
         if self.__size == 0:
-            print('')
+            print()
         else:
-            for index in range(self.__position[1]):
+            for i in range(self.__position[1]):
                 print()
-            for i in range(0, self.__size):
-                print('{}{}'.format(' '*self.position[0], '#'*self.__size))
+            for i in range(self.__size):
+                print(" " * self.__position[0], end="")
+                print("#" * self.__size)
