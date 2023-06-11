@@ -66,19 +66,6 @@ class Square:
         else:
             self.__size = value
 
-    def my_print(self):
-        """Prints a square made of "#" characters with a size determined by
-        the value of the private attribute "__size". If the size is set to 0,
-        prints an empty line. Prints as many empty spaces as the first number
-        of position
-        """
-        if self.__size == 0:
-            print()
-        else:
-            for i in range(self.__size):
-                print(" " * self.__position[0], end="")
-                print("#" * self.__size)
-
     @property
     def position(self):
         """Gets or sets the position of the object.
@@ -101,3 +88,16 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
+
+    def my_print(self):
+        """Prints a square made of "#" characters with a size determined by
+        the value of the private attribute "__size". If the size is set to 0,
+        prints an empty line. Prints as many empty spaces as the first number
+        of position
+        """
+        if self.__size == 0:
+            print()
+        else:
+            for i in range(self.__size):
+                print(" " * self.__position[0], end="")
+                print("#" * self.__size)
