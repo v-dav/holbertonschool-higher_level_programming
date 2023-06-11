@@ -23,7 +23,6 @@ class Square:
             ValueError: If the size attribute is less than zero
         """
         self.__position = position
-        self.__size = size
         if type(size) is not int:
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -34,6 +33,8 @@ class Square:
             or position[0] < 0 or position[1] < 0
         ):
             raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__size = size
 
     def area(self):
         """A method that calculates the area of the square of size 'size'
