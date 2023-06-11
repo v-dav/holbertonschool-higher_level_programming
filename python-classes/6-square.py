@@ -95,6 +95,7 @@ class Square:
         prints an empty line. Prints as many empty spaces as the first number
         of position
         """
+        self.my_print = self
         if self.__size == 0:
             print()
         else:
