@@ -18,12 +18,11 @@ class Square:
                 attributes and is stored as a private attribute.
 
         Raises:
-            TypeError: If the size attribute is not an integer or
-            position is not a tuple of 2 positive integers
+            TypeError: If the size attribute is not an integer
             ValueError: If the size attribute is less than zero
         """
         self.__size = size
-        self.__position = position
+        self.position = position
         if type(self.__size) is not int:
             raise TypeError('size must be an integer')
         if self.__size < 0:
