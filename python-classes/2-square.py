@@ -12,7 +12,7 @@ class Square:
             size (int, optional): represents the size of an object.
                 Defaults to 0. It is used in the initialization of an object's
                 attributes is stored as a private attribute.
-        
+
         Raises:
             TypeError: If the size attribute is not an integer
             ValueError: If the size attribute is less than zero"""
