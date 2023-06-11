@@ -24,8 +24,8 @@ At the end of this project, I'am expected to be able to explain to anyone:
 - How to use the getattr function
 
 ## ⚙️ List of files
-- 0-square.py: an empty class Square that defines a square:
-- 1-square.py: a class Square that defines a square by: (based on 0-square.py)
+- 0-square.py: an empty class Square that defines a square
+- 1-square.py: a class Square that defines a square with a private instance attribute size
 - 2-square.py: a class Square that defines a square by: (based on 1-square.py)
 - 3-square.py: a class Square that defines a square by: (based on 2-square.py)
 - 4-square.py: a class Square that defines a square by: (based on 3-square.py)
