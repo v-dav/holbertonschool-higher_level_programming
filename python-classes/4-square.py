@@ -43,18 +43,10 @@ class Square:
             TypeError: If the value is not an integer.
             ValueError: If the value is less than 0.
         """
+        return self.__size
 
     @size.setter
     def size(self, value):
-        """Gets or sets the size of the square.
-
-        When setting the size, the value must be an integer greater than
-        or equal to 0.
-
-        Raises:
-            TypeError: If the value is not an integer.
-            ValueError: If the value is less than 0.
-        """
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
