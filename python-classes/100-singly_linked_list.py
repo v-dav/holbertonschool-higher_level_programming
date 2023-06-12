@@ -72,14 +72,13 @@ class SinglyLinkedList:
         concatenates the string representation of each node's data,
         separated by newline characters, and returns the resulting string.
         """
-        list_str = ""
-        current = self.__head
-        while current:
-            list_str += str(current.data)
-            if current.next_node:
-                list_str += "\n"
-            current = current.next_node
-        return list_str
+        tmp = self.__head
+        if tmp is None:
+            return ("")
+        while tmp.next_node is not None and tmp:
+            print(tmp.data)
+            tmp = tmp.next_node
+        return (str(tmp.data))
 
     def sorted_insert(self, value):
         """
