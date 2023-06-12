@@ -17,7 +17,7 @@ class Node:
                 is not an object of class Node
         """
         self.__data = data
-        self.next_Node = next_Node
+        self.__next_Node = next_Node
         if type(data) is not int:
             raise TypeError("data must be an integer")
         if next_Node is not None and type(next_Node) is not Node:
