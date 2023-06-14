@@ -5,7 +5,7 @@
 def matrix_divided(matrix, div):
     """A function that divides all elements of a matrix"""
 
-    if type(matrix) is not list:
+    if type(matrix) is not list or matrix == []:
         raise TypeError("matrix must be a matrix (list of lists) "
                         "of integers/floats")
 
@@ -18,7 +18,7 @@ def matrix_divided(matrix, div):
     new_matrix = []
 
     for i in matrix:
-        if type(i) is not list:
+        if type(i) is not list or i == []:
             raise TypeError("matrix must be a matrix (list of lists) "
                             "of integers/floats")
 
