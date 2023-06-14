@@ -48,3 +48,6 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 >>> print(matrix_divided(matrix1, -3))
 [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+
+>>> print(matrix_divided([[-1, -2, -3], [-2, -3, -4]], 4.5))
+[[-0.22, -0.44, -0.67], [-0.44, -0.67, -0.89]]
