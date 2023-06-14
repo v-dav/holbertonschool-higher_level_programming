@@ -7,7 +7,8 @@ def add_integer(a, b=98):
 
     Args:
         a (int or float): first number. Casted to integer if float
-        b (int or float): second number. Casted to integer if float
+        b (int or float): second number. Casted to integer if float.
+        Optional, by default at 98
 
     Returns:
         The result of the addition of two numbers, in integer
