@@ -3,7 +3,7 @@
 
 
 def matrix_divided(matrix, div):
-    """a function that divides all elements of a matrix."""
+    """A function that divides all elements of a matrix"""
 
     if type(matrix) is not list:
         raise TypeError("matrix must be a matrix (list of lists) "
