@@ -1,0 +1,45 @@
+===============================
+ How to Use 2-matrix_divided.py
+===============================
+
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+>>> matrix1 = [
+...	[1, 2, 3],
+...	[4, 5, 6]
+... ]
+
+>>> print(matrix_divided(matrix1, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> print(matrix1)
+[[1, 2, 3], [4, 5, 6]]
+
+>>> matrix2 = 27
+>>> matrix_divided(matrix2, 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided(matrix1, 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+>>> matrix_divided(matrix1, 'a')
+Traceback (most recent call last):
+TypeError: div must be a number
+
+>>> matrix3 = [100, [2, 3, 4]]
+>>> matrix_divided(matrix3, 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix4 = [[1, 2, 3, 4], [1, 2, 3]]
+>>> matrix_divided(matrix4, 3)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix5 = [[1, 2, 3], ['a', 'b', 'c']]
+>>> matrix_divided(matrix5, 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
