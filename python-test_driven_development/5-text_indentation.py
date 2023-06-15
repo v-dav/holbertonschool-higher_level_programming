@@ -23,17 +23,19 @@ def text_indentation(text):
 
     i = 0
     space = True
+    new_string = ""
 
     while i < len(text):
         if space and text[i] == " ":
             i += 1
             continue
-        print("{}".format(text[i]), end="")
+        new_string += text[i]
         if (text[i] == '.' or text[i] == '?' or text[i] == ':')\
                 and i + 1 != len(text):
-            print("\n")
+            new_string += "\n\n"
             space = True
             i += 1
         else:
             space = False
         i += 1
+    print(new_string, end="")
