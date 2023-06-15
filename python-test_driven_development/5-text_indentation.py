@@ -38,4 +38,4 @@ def text_indentation(text):
         else:
             space = False
         i += 1
-    print(new_string, end="")
+    print(new_string.strip(), end="")
