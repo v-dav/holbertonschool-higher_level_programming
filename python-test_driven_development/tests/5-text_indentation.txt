@@ -15,7 +15,6 @@ Comment allez-vous?
 Dites cela:
 <BLANKLINE>
 Hej.
-<BLANKLINE>
 
 Text argument is not a string
 ===============================
@@ -44,7 +43,6 @@ Utrum igitur tibi litteram videor an totas paginas commovere?
 Non autem hoc:
 <BLANKLINE>
 igitur ne illud quidem.
-<BLANKLINE>
 
 No text is provided to the function
 ===============================
@@ -68,4 +66,3 @@ Utrum igitur tibi litteram videor an totas paginas commovere?
 Non autem hoc:
 <BLANKLINE>
 igitur ne illud quidem.
-<BLANKLINE>
