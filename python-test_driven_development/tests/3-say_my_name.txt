@@ -1,0 +1,37 @@
+===============================
+ How to Use 0-add_integer.py
+===============================
+
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Last and First name are strings
+===============================
+
+>>> say_my_name("Vladimir", "Davidov")
+My name is Vladimir Davidov
+
+First or Last name is not provided
+===============================
+
+>>> say_my_name("Bob")
+My name is Bob 
+
+First name is an empty string
+===============================
+
+>>> say_my_name("", "Asimov")
+My name is  Asimov
+
+First name is not a string
+================================
+
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+Last name is not a string
+================================
+
+>>> say_my_name("Isaac", 45)
+Traceback (most recent call last):
+TypeError: last_name must be a string
