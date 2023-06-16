@@ -84,6 +84,8 @@ class Rectangle:
             The string representation of the rectangle object
         """
         new_string = ""
+        if self.__height or self.__width == 0:
+            return new_string
         for i in range(self.__height):
             for j in range(self.__width):
                 new_string += "#"
