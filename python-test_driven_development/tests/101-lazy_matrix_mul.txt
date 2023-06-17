@@ -18,29 +18,28 @@ First argument is not a list
 ===============================
 
 >>> lazy_matrix_mul(2, [[2, 5]])
-Traceback (most recent call last):
-ValueError: Scalar operands are not allowed, use '*' instead
+array([[ 4, 10]])
 
 Second argument is not a list
 ===============================
 
 >>> lazy_matrix_mul([[2, 5]], "Hello")
 Traceback (most recent call last):
-ValueError: Scalar operands are not allowed, use '*' instead
+numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U1'), dtype('<U5')) -> None
 
 First argument is an empty matrix
 ===============================
 
 >>> lazy_matrix_mul([[]], [[2, 5]])
 Traceback (most recent call last):
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 0)
+ValueError: shapes (1,0) and (1,2) not aligned: 0 (dim 1) != 1 (dim 0)
 
 Second argument is an empty list
 ===============================
 
 >>> lazy_matrix_mul([[2, 5]], [])
 Traceback (most recent call last):
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 0 is different from 2)
+ValueError: shapes (1,2) and (0,) not aligned: 2 (dim 1) != 0 (dim 0)
 
 First argument is a list but not a matrix
 ===============================
@@ -75,7 +74,7 @@ First matrix contains not only integers or floats
 
 >>> lazy_matrix_mul([[1, 2.5], [1, "Taieb"]], [[5, 10], [10, 20]])
 Traceback (most recent call last):
-numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U32'), dtype('int64')) -> None
+ValueError: data type must provide an itemsize
 
 Second matrix contains not only integers or floats
 ===============================
@@ -90,7 +89,7 @@ to the nomber of rows of the second matrix
 
 >>> lazy_matrix_mul([[1, 2, 3, 4]], [[10, 20], [30, 40]])
 Traceback (most recent call last):
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 4)
+ValueError: shapes (1,4) and (2,2) not aligned: 4 (dim 1) != 2 (dim 0)
 
 Missing one argument
 ===============================
