@@ -1,0 +1,92 @@
+===============================
+ How to Use 100-matrix_mul.py
+===============================
+
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+Normal Use
+===============================
+
+>>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[7, 10], [15, 22]]
+
+>>> print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13, 16]]
+
+First argument is not a list
+===============================
+
+>>> matrix_mul(2, [[2, 5]])
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+Second argument is not a list
+===============================
+
+>>> matrix_mul([[2, 5]], "Hello")
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+First argument is an empty matrix
+===============================
+
+>>> matrix_mul([[]], [[2, 5]])
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+Second argument is an empty list
+===============================
+
+>>> matrix_mul([[2, 5]], [])
+Traceback (most recent call last):
+ValueError: m_b can't be empty
+
+First argument is a list but not a matrix
+===============================
+
+>>> matrix_mul([[5, 10], "Bonjour"], [[2, 5]])
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+Second argument is a list but not a matrix
+===============================
+
+>>> matrix_mul([[5, 10]], [[2, 5], "Bonjour"])
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+Rows of first matrix are not equal
+===============================
+
+>>> matrix_mul([[1, 2], [1, 2, 3]], [[5, 10], [10, 20]])
+Traceback (most recent call last):
+TypeError: each row of m_a must be of the same size
+
+Rows of second matrix are not equal
+===============================
+
+>>> matrix_mul([[1, 2], [1, 5]], [[5, 10], [10, 20, 30]])
+Traceback (most recent call last):
+TypeError: each row of m_b must be of the same size
+
+First matrix contains not only integers or floats
+===============================
+
+>>> matrix_mul([[1, 2.5], [1, "Taieb"]], [[5, 10], [10, 20]])
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+Second matrix contains not only integers or floats
+===============================
+
+>>> matrix_mul([[1, 2.5], [1, 15.75]], [[5, [5, 456]], [10, 20]])
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+Nb of columns of the first matrix is not equal
+to the nomber of rows of the second matrix
+===============================
+
+>>> matrix_mul([[1, 2, 3, 4]], [[10, 20], [30, 40]])
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
