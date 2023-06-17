@@ -19,7 +19,7 @@ First argument is not a list
 
 >>> lazy_matrix_mul(2, [[2, 5]])
 Traceback (most recent call last):
-ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+ValueError: Scalar operands are not allowed, use '*' instead
 
 Second argument is not a list
 ===============================
