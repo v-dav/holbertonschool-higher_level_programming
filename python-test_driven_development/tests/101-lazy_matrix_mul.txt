@@ -26,7 +26,7 @@ Second argument is not a list
 
 >>> lazy_matrix_mul([[2, 5]], "Hello")
 Traceback (most recent call last):
-numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('int64'), dtype('<U5')) -> None
+ValueError: Scalar operands are not allowed, use '*' instead
 
 First argument is an empty matrix
 ===============================
