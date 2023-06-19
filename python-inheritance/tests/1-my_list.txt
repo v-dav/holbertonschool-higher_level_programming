@@ -1,14 +1,14 @@
 ===========================
 How to use 1-my_list.py
 ===========================
-
 >>> MyList = __import__('1-my_list').MyList
-
-Create an instance and populate
-with integers
-===========================
-
 >>> my_list = MyList()
+
+>>> my_list.print_sorted()
+[]
+
+>>> print(my_list)
+[]
 
 >>> my_list.append(2)
 >>> my_list.append(3)
