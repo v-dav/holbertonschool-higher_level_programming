@@ -7,50 +7,50 @@ Exception: area() is not implemented
 
 >>> bg.integer_validator()
 Traceback (most recent call last):
-TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
->>> bg.integer_validator("Ouvrez le checker jpp là please")
+>>> bg.integer_validator("hi")
 Traceback (most recent call last):
-TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", "hello")
+>>> bg.integer_validator("hi", "hello")
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", -2)
+>>> bg.integer_validator("hi", -2)
 Traceback (most recent call last):
-ValueError: Ouvrez le checker jpp là please must be greater than 0
+ValueError: hi must be greater than 0
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", 0)
+>>> bg.integer_validator("hi", 0)
 Traceback (most recent call last):
-ValueError: Ouvrez le checker jpp là please must be greater than 0
+ValueError: hi must be greater than 0
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", 2)
+>>> bg.integer_validator("hi", 2)
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", (0, 1))
+>>> bg.integer_validator("hi", (0, 1))
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", [0, 1])
+>>> bg.integer_validator("hi", [0, 1])
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", {0:1, 2:3})
+>>> bg.integer_validator("hi", {0:1, 2:3})
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", {0, 3})
+>>> bg.integer_validator("hi", {0, 3})
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", {0:1, 2:3})
+>>> bg.integer_validator("hi", {0:1, 2:3})
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", True)
+>>> bg.integer_validator("hi", True)
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
 
->>> bg.integer_validator("Ouvrez le checker jpp là please", None)
+>>> bg.integer_validator("hi", None)
 Traceback (most recent call last):
-TypeError: Ouvrez le checker jpp là please must be an integer
+TypeError: hi must be an integer
