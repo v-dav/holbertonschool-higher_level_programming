@@ -3,28 +3,76 @@ How to use 1-my_list.py
 ===========================
 
 >>> MyList = __import__('1-my_list').MyList
->>> my_list = MyList()
 
+Create an instance and populate
+with integers
+===========================
+
+>>> my_list = MyList()
 >>> my_list.print_sorted()
 []
 
->>> print(my_list)
-[]
-
+>>> my_list.append(1)
+>>> my_list.append(4)
 >>> my_list.append(2)
 >>> my_list.append(3)
->>> my_list.append(1)
-
+>>> my_list.append(5)
 >>> print(my_list)
-[2, 3, 1]
+[1, 4, 2, 3, 5]
+
+Print a sorted list
+===========================
 
 >>> my_list.print_sorted()
-[1, 2, 3]
+[1, 2, 3, 4, 5]
 
->>> my_list.append(-1)
-
->>> my_list.print_sorted()
-[-1, 1, 2, 3]
+The original list is unaltered
+===========================
 
 >>> print(my_list)
-[2, 3, 1, -1]
+[1, 4, 2, 3, 5]
+
+Print.sorted() method takes no
+arguments
+===========================
+
+>>> my_list.print_sorted("Hi")
+Traceback (most recent call last):
+TypeError: MyList.print_sorted() takes 1 positional argument but 2 were given
+
+Use any of inherited list class
+methods
+===========================
+
+>>> my_list2 = MyList()
+>>> my_list2.append(10)
+>>> my_list2.append(100)
+>>> my_list2.append(10000)
+>>> print(my_list2)
+[10, 100, 10000]
+
+>>> my_list2.pop()
+10000
+
+>>> print(my_list2)
+[10, 100]
+
+>>> my_list2.clear()
+>>> print(my_list2)
+[]
+
+>>> my_list3 = MyList()
+>>> my_list3.append(35)
+>>> my_list3.append(45)
+>>> my_list3.append(55)
+>>> my_list4 = my_list3.copy()
+>>> print(my_list4)
+[35, 45, 55]
+
+>>> my_list4.count(55)
+1
+
+>>> a = [1, 2, 3, 4]
+>>> my_list4.extend(a)
+>>> print(my_list4)
+[35, 45, 55, 1, 2, 3, 4]
