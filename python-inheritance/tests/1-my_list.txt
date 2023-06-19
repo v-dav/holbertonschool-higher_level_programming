@@ -54,4 +54,22 @@ methods
 >>> print(my_list2)
 [10, 100]
 
+>>> my_list2.clear()
+>>> print(my_list2)
+[]
 
+>>> my_list3 = MyList()
+>>> my_list3.append(35)
+>>> my_list3.append(45)
+>>> my_list3.append(55)
+>>> my_list4 = my_list3.copy()
+>>> print(my_list4)
+[35, 45, 55]
+
+>>> my_list4.count(55)
+1
+
+>>> a = [1, 2, 3, 4]
+>>> my_list4.extend(a)
+>>> print(my_list4)
+[35, 45, 55, 1, 2, 3, 4]
