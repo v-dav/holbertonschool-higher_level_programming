@@ -58,9 +58,6 @@ class Student:
         Return: nothing
         """
 
-        if "first_name" in json:
-            self.first_name = json["first_name"]
-        if "last_name" in json:
-            self.last_name = json["last_name"]
-        if "age" in json:
-            self.age = json["age"]
+        for k, v in json.items():
+            if k in self.__dict__:
+                self.__dict__[k] = v
