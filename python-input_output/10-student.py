@@ -37,7 +37,7 @@ class Student:
             in this list must be retrieved.
         """
 
-        if not attrs or type(attrs) is not list:
+        if attrs is None or type(attrs) is not list:
             return self.__dict__
 
         select_dict = {}
