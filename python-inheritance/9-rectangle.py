@@ -30,8 +30,7 @@ class Rectangle(BaseGeometry):
 
         Returns: a formatted string
         """
-        return "[{}] {}/{}".format(self.__class__.__name__,
-                                   self.__width, self.__height)
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
 
     def area(self):
         """A public instance method that coputes
