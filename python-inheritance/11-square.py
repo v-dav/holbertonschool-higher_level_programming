@@ -18,7 +18,7 @@ class Square(Rectangle):
 
         Returns: nothing
         """
-        super().__init__(size, size)
+        super().integer_validator("size", size)
         self.__size = size
 
     def __str__(self):
@@ -28,3 +28,11 @@ class Square(Rectangle):
         Returns: a formatted string
         """
         return "[Square] {}/{}".format(self.__size, self.__size)
+
+    def area(self):
+        """A public instance method that coputes
+        the rectangle area
+
+        Returns: the rectangle area
+        """
+        return self.__size ** 2
