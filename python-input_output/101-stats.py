@@ -3,19 +3,17 @@
 
 
 import sys
-import signal
 from collections import Counter
 
+counter = 0
+total_size = 0
+status_code_list = []
+file_size_list = []
 
-def print_stats(signal=None, frame=None):
+
+def print_stats():
     """
     The function prints the total file size and a count of each status code.
-
-    Args:
-        signal: A signal handler function that can be used to handle signals
-            received by the program. Optional. Defaults to None.
-        frame: A reference to the current stack frame at the time the
-    `print_stats` function is called. Optional. Defaults to None.
     """
     print("File size: {}".format(total_size))
     status_code_dict = Counter(status_code_list)
@@ -23,25 +21,18 @@ def print_stats(signal=None, frame=None):
         print("{}: {}".format(status_code, count))
 
 
-signal.signal(signal.SIGINT, print_stats)
-"""`Setting up a signal handler for the SIGINT signal
-(which is sent to a process when the user presses Ctrl+C on the keyboard)
-to call the `print_stats` function. This allows the program to gracefully
-handle the signal and print out the current statistics before exiting.
-"""
+try:
+    for line in sys.stdin:
+        counter += 1
+        line_list = line.split()
+        status_code_list.append(line_list[-2])
+        status_code_list.sort()
+        file_size_list.append(line_list[-1])
+        status_code_dict = Counter(status_code_list)
+        total_size += int(line_list[-1])
+        if counter % 10 == 0:
+            print_stats()
 
-counter = 0
-total_size = 0
-status_code_list = []
-file_size_list = []
-
-for line in sys.stdin:
-    counter += 1
-    line_list = line.split()
-    status_code_list.append(line_list[-2])
-    status_code_list.sort()
-    file_size_list.append(line_list[-1])
-    status_code_dict = Counter(status_code_list)
-    total_size += int(line_list[-1])
-    if counter % 10 == 0:
-        print_stats()
+except KeyboardInterrupt:
+    print_stats()
+    raise
