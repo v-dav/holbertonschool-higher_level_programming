@@ -1,34 +1,39 @@
 #!/usr/bin/python3
-"""Module contain reads stdin line by line and computes metric"""
+"""A script that reads stdin line by line and computes metrics"""
 
 
 import sys
+from collections import Counter
 
-status_code = ["200", "301", "400", "401", "403", "404", "405", "500"]
-metrics = {}
+
+def print_stats():
+    """
+    The function prints the total file size and a count of each status code.
+
+    Args:
+        signal: A signal handler function that can be used to handle signals
+            received by the program. Optional. Defaults to None.
+        frame: A reference to the current stack frame at the time the
+    `print_stats` function is called. Optional. Defaults to None.
+    """
+    print("File size: {}".format(total_size))
+    status_code_dict = Counter(status_code_list)
+    for status_code, count in status_code_dict.items():
+        print("{}: {}".format(status_code, count))
+
+
+counter = 0
 total_size = 0
-line_cnt = 0
+status_code_list = []
+file_size_list = []
 
-try:
-    for line in sys.stdin:
-        if line_cnt == 10:
-            print(f"File size: {total_size}")
-            for key, value in sorted(metrics.items()):
-                print(f"{key}: {value}")
-            line_cnt = 1
-
-        try:
-            status = line.split()[-2]
-            if status in status_code:
-                total_size += int(line.split()[-1])
-                metrics[status] = metrics.get(status, 0) + 1
-        except Exception:
-            pass
-
-        line_cnt += 1
-
-except KeyboardInterrupt:
-    print(f"File size: {total_size}")
-    for key, value in sorted(metrics.items()):
-        print(f"{key}: {value}")
-    raise
+for line in sys.stdin:
+    counter += 1
+    line_list = line.split()
+    status_code_list.append(line_list[-2])
+    status_code_list.sort()
+    file_size_list.append(line_list[-1])
+    status_code_dict = Counter(status_code_list)
+    total_size += int(line_list[-1])
+    if counter % 10 == 0:
+        print_stats()
