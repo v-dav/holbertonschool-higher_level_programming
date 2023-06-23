@@ -3,12 +3,11 @@
 
 
 import sys
-from collections import Counter
 
 counter = 0
 total_size = 0
-status_code_list = []
-file_size_list = []
+status_code_list = ["200", "301", "400", "401", "403", "404", "405", "500"]
+metrics = {}
 
 
 def print_stats():
@@ -16,20 +15,17 @@ def print_stats():
     The function prints the total file size and a count of each status code.
     """
     print("File size: {}".format(total_size))
-    status_code_dict = Counter(status_code_list)
-    for status_code, count in status_code_dict.items():
-        print("{}: {}".format(status_code, count))
+    for key, value in sorted(metrics.items()):
+        print(f"{key}: {value}")
 
 
 try:
     for line in sys.stdin:
         counter += 1
-        line_list = line.split()
-        status_code_list.append(line_list[-2])
-        status_code_list.sort()
-        file_size_list.append(line_list[-1])
-        status_code_dict = Counter(status_code_list)
-        total_size += int(line_list[-1])
+        status = line.split()[-2]
+        if status in status_code_list:
+            total_size += int(line.split()[-1])
+            metrics[status] = metrics.get(status, 0) + 1
         if counter % 10 == 0:
             print_stats()
 
