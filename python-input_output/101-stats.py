@@ -20,14 +20,17 @@ def print_stats():
 
 
 try:
-    for line in sys.stdin:
-        counter += 1
-        status = line.split()[-2]
-        if status in status_code_list:
-            total_size += int(line.split()[-1])
-            metrics[status] = metrics.get(status, 0) + 1
-        if counter % 10 == 0:
-            print_stats()
+    try:
+        for line in sys.stdin:
+            counter += 1
+            status = line.split()[-2]
+            if status in status_code_list:
+                total_size += int(line.split()[-1])
+                metrics[status] = metrics.get(status, 0) + 1
+            if counter % 10 == 0:
+                print_stats()
+    except Exception:
+        pass
 
 except KeyboardInterrupt:
     print_stats()
