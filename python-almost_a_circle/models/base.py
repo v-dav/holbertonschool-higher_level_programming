@@ -8,7 +8,8 @@ class Base:
     to avoid duplicating the same code
 
     Attributes:
-        __nb_objects (int): number of instances without id provided
+        __nb_objects (int): private class attribute number of instances
+        without id provided
     """
 
     __nb_objects = 0
