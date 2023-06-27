@@ -72,17 +72,17 @@ class TestRectangleClass(unittest.TestCase):
     def test_display(self):
         """Test the exepcted Rectangle display"""
 
-        self.r1 = Rectangle(4, 6)
-        self.r2 = Rectangle(2, 2)
+        self.r1 = Rectangle(4, 6, 2, 2)
+        self.r2 = Rectangle(2, 2, 1, 1)
 
         with patch("sys.stdout", new=io.StringIO()) as output:
             self.r1.display()
-            expected_output = "####\n####\n####\n####\n####\n####\n"
-            self.assertEqual(output.getvalue(), expected_output)
+            exp_output = "\n\n  ####\n  ####\n  ####\n  ####\n  ####\n  ####\n"
+            self.assertEqual(output.getvalue(), exp_output)
 
         with patch("sys.stdout", new=io.StringIO()) as output:
             self.r2.display()
-            expected_output = "##\n##\n"
+            expected_output = "\n ##\n ##\n"
             self.assertEqual(output.getvalue(), expected_output)
 
     def test_str(self):
