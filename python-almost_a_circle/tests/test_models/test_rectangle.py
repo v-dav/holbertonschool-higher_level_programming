@@ -109,8 +109,16 @@ class TestRectangleClass(unittest.TestCase):
         self.r1.update(89)
         self.assertEqual(self.r1.id, 89)
 
+        """Test with *args"""
         self.r1.update(89, 2, 3, 4, 5)
         with patch("sys.stdout", new=io.StringIO()) as output:
             print(self.r1)
             expected_output = "[Rectangle] (89) 4/5 - 2/3\n"
+            self.assertEqual(output.getvalue(), expected_output)
+
+        """Test with **kwargs"""
+        self.r1.update(x=1, height=2, y=3, width=4)
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r1)
+            expected_output = "[Rectangle] (89) 1/3 - 4/2\n"
             self.assertEqual(output.getvalue(), expected_output)
