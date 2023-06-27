@@ -109,10 +109,14 @@ class Rectangle(Base):
 
     def display(self):
         """
-        Public method that displays a rectangle made of '#' characters
-        with a height and width specified by the object's attributes.
+        This function displays a rectangle made of '#' characters with
+        a specified height, width, and position.
         """
+        for ord in range(self.__y):
+            print()
         for i in range(self.__height):
+            for abs in range(self.__x):
+                print(" ", end="")
             for j in range(self.__width):
                 print('#', end="")
             print()
