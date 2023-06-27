@@ -135,12 +135,15 @@ class Rectangle(Base):
                                                        self.__y, self.__width,
                                                        self.__height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
+        """A public instance method that updates the attributes of an object
+        based on either positional arguments or keyword arguments.
         """
-        This function updates the attributes of an object with
-        the values passed as arguments.
-        """
-        attributes = ["id", "width", "height", "x", "y"]
-        for attr, arg in zip(attributes, args):
-            if arg is not None:
-                setattr(self, attr, arg)
+        if args is not None and args != ():
+            attributes = ["id", "width", "height", "x", "y"]
+            for attr, arg in zip(attributes, args):
+                if arg is not None:
+                    setattr(self, attr, arg)
+        else:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
