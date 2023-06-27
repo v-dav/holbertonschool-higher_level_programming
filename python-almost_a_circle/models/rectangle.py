@@ -106,3 +106,13 @@ class Rectangle(Base):
         Returns: the rectangle area.
         """
         return self.__width * self.__height
+
+    def display(self):
+        """
+        Public method that displays a rectangle made of '#' characters
+        with a height and width specified by the object's attributes.
+        """
+        for i in range(self.__height):
+            for j in range(self.__width):
+                print('#', end="")
+            print()
