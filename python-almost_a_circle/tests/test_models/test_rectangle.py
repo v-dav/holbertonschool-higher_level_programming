@@ -84,3 +84,19 @@ class TestRectangleClass(unittest.TestCase):
             self.r2.display()
             expected_output = "##\n##\n"
             self.assertEqual(output.getvalue(), expected_output)
+
+    def test_str(self):
+        """Test the display of the Rectangle representation"""
+
+        self.r1 = Rectangle(4, 6, 2, 1, 12)
+        self.r2 = Rectangle(5, 5, 1, 1, 100)
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r1)
+            expected_output = "[Rectangle] (12) 2/1 - 4/6\n"
+            self.assertEqual(output.getvalue(), expected_output)
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r2)
+            expected_output = "[Rectangle] (100) 1/1 - 5/5\n"
+            self.assertEqual(output.getvalue(), expected_output)
