@@ -116,3 +116,17 @@ class Rectangle(Base):
             for j in range(self.__width):
                 print('#', end="")
             print()
+
+    def __str__(self):
+        """
+        Returns a string representation of a Rectangle object with its id,
+        x and y coordinates, width, and height.
+
+        Returns:
+            A formatted string that represents the rectangle
+        object. The format of the string is
+        "[Rectangle] (id) x/y - width/height".
+        """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                                                       self.__y, self.__width,
+                                                       self.__height)
