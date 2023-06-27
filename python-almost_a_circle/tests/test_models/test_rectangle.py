@@ -100,3 +100,17 @@ class TestRectangleClass(unittest.TestCase):
             print(self.r2)
             expected_output = "[Rectangle] (100) 1/1 - 5/5\n"
             self.assertEqual(output.getvalue(), expected_output)
+
+    def test_update(self):
+        """Test the update class method of the Rectangle"""
+
+        self.r1 = Rectangle(10, 10, 10, 5)
+
+        self.r1.update(89)
+        self.assertEqual(self.r1.id, 89)
+
+        self.r1.update(89, 2, 3, 4, 5)
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r1)
+            expected_output = "[Rectangle] (89) 4/5 - 2/3\n"
+            self.assertEqual(output.getvalue(), expected_output)
