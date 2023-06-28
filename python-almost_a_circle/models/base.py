@@ -98,6 +98,9 @@ class Base:
             The method is returning an instance of the class `cls` with
             the attributes specified in the `dictionary` parameter.
         """
-        dummy = cls(15, 15)
+        if cls.__name__ == "Square":
+            dummy = cls(15)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(10, 15)
         dummy.update(**dictionary)
         return dummy
