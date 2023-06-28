@@ -212,3 +212,17 @@ class TestRectangleClass(unittest.TestCase):
             print(self.r2)
             expected_output = "[Rectangle] (400) 1/0 - 3/5\n"
             self.assertEqual(output.getvalue(), expected_output)
+
+    def test_loadFromFile(self):
+        """Test for the class method loadFromFile"""
+
+        self.r1 = Rectangle(10, 7, 2, 8)
+        list_rectangles_input = [self.r1]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            for inst in list_rectangles_output:
+                print(inst)
+                expected_output = "[Rectangle] (11) 2/8 - 10/7\n"
+                self.assertEqual(output.getvalue(), expected_output)

@@ -209,3 +209,17 @@ class TestSquareClass(unittest.TestCase):
             print(self.r2)
             expected_output = "[Square] (400) 5/1 - 3\n"
             self.assertEqual(output.getvalue(), expected_output)
+
+    def test_loadFromFile(self):
+        """Test for the class method loadFromFile"""
+
+        self.s1 = Square(10, 7, 2, 8)
+        list_rectangles_input = [self.s1]
+        Square.save_to_file(list_rectangles_input)
+        list_rectangles_output = Square.load_from_file()
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            for inst in list_rectangles_output:
+                print(inst)
+                expected_output = "[Square] (8) 7/2 - 10\n"
+                self.assertEqual(output.getvalue(), expected_output)
