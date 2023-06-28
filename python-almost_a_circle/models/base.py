@@ -98,7 +98,6 @@ class Base:
             The method is returning an instance of the class `cls` with
             the attributes specified in the `dictionary` parameter.
         """
-        if dictionary is not None:
-            dummy = cls(10, 15)
-            dummy.update(**dictionary)
-            return dummy
+        dummy = cls(10, 15)
+        dummy.update(**dictionary)
+        return dummy
