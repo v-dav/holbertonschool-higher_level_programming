@@ -98,6 +98,6 @@ class Base:
             The method is returning an instance of the class `cls` with
             the attributes specified in the `dictionary` parameter.
         """
-        dummy = cls(10, 15)
+        dummy = cls(15, 15)
         dummy.update(**dictionary)
         return dummy
