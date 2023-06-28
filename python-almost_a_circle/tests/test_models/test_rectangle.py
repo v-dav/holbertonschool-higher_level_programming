@@ -195,3 +195,20 @@ class TestRectangleClass(unittest.TestCase):
 
         """Test with None"""
         self.assertEqual([], Rectangle.from_json_string(None))
+
+    def test_create(self):
+        """Test for create class method"""
+
+        self.r1 = Rectangle(3, 5, 1, 0, 400)
+        r1_dictionary = self.r1.to_dictionary()
+        self.r2 = Rectangle.create(**r1_dictionary)
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r1)
+            expected_output = "[Rectangle] (400) 1/0 - 3/5\n"
+            self.assertEqual(output.getvalue(), expected_output)
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r2)
+            expected_output = "[Rectangle] (400) 1/0 - 3/5\n"
+            self.assertEqual(output.getvalue(), expected_output)

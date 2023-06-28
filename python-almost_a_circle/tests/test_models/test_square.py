@@ -192,3 +192,20 @@ class TestSquareClass(unittest.TestCase):
 
         """Test with None"""
         self.assertEqual([], Square.from_json_string(None))
+
+    def test_create(self):
+        """Test for create class method"""
+
+        self.r1 = Square(3, 5, 1, 400)
+        r1_dictionary = self.r1.to_dictionary()
+        self.r2 = Square.create(**r1_dictionary)
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r1)
+            expected_output = "[Square] (400) 5/1 - 3\n"
+            self.assertEqual(output.getvalue(), expected_output)
+
+        with patch("sys.stdout", new=io.StringIO()) as output:
+            print(self.r2)
+            expected_output = "[Square] (400) 5/1 - 3\n"
+            self.assertEqual(output.getvalue(), expected_output)
