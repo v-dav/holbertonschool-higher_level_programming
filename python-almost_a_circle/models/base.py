@@ -88,3 +88,17 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """A class method that creates a new instance of the class
+        and updates its attributes using a dictionary.
+
+        Return:
+            The method is returning an instance of the class `cls` with
+            the attributes specified in the `dictionary` parameter.
+        """
+        if dictionary is not None and dictionary != {}:
+            dummy = cls(10, 15)
+            dummy.update(**dictionary)
+            return dummy
