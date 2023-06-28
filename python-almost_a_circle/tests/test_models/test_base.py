@@ -9,6 +9,9 @@ import json
 class TestBaseClass(unittest.TestCase):
     """A unittest class to test the Base Class"""
 
+    def setUp(self):
+        self.b = Base(5)
+
     def test_object_noId(self):
         """Test object creation without providing an ID"""
 
