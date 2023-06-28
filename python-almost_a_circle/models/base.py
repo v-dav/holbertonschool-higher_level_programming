@@ -62,11 +62,13 @@ class Base:
 
         Returns: nothing
         """
+        
         filename = "{}.json".format(cls.__name__)
         a_list = []
-        with open(filename, "w", encoding="utf-8") as json_file:
+        with open(filename, "w", encoding="utf-8") as f:
             if list_objs is not None:
                 for obj in list_objs:
                     a_dict = obj.to_dictionary()
                     a_list.append(a_dict)
-            json.dump(a_list, json_file)
+            json_string = cls.to_json_string(a_list)
+            f.write(json_string)
