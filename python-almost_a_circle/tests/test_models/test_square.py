@@ -163,3 +163,23 @@ class TestSquareClass(unittest.TestCase):
 
             if os.path.exists("Square.json"):
                 os.remove("Square.json")
+
+    def test_fromJSONString(self):
+        """Test for the from_JSON_string method"""
+
+        list_input = [{'id': 89, 'size': 10, 'x': 4},
+                      {'id': 7, 'size': 1, 'y': 7}]
+
+        json_list_input = Square.to_json_string(list_input)
+        list_output = Square.from_json_string(json_list_input)
+
+        self.assertEqual(list_input, list_output)
+
+        """Test with an empty string"""
+        list_input2 = []
+        json_list_input2 = Square.to_json_string(list_input2)
+        list_output2 = Square.from_json_string(json_list_input2)
+        self.assertEqual(list_input2, list_output2)
+
+        """Test with None"""
+        self.assertEqual([], Square.from_json_string(None))
