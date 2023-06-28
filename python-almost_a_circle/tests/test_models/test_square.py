@@ -138,14 +138,17 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(self.s2.to_dictionary(), s1_dictionary)
         self.assertNotEqual(self.s1, self.s2)
 
+    def test_toJsonString(self):
+        """Test for the Base method"""
+
+        """Test with None"""
+        self.assertEqual("[]", Square.to_json_string(None))
+
+        """Test with empty list"""
+        self.assertEqual("[]", Square.to_json_string([]))
+
     def test_saveToFile(self):
         """Test for the save_to_file class method"""
-
-        def setUp(self):
-            """Setup before each test"""
-
-            if os.path.exists("Square.json"):
-                os.remove("Square.json")
 
         self.s1 = Square(10, 7, 2, 8)
         self.s2 = Square(2, 4)
@@ -158,11 +161,17 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(content, [self.s1.to_dictionary(),
                                    self.s2.to_dictionary()])
 
-        def tearDown(self):
-            """Clean up after each test"""
+        """Test with None"""
+        Square.save_to_file(None)
+        with open("Square.json", "r", encoding="utf-8") as f:
+            content = json.load(f)
+        self.assertEqual(content, [])
 
-            if os.path.exists("Square.json"):
-                os.remove("Square.json")
+        """Test with empty list"""
+        Square.save_to_file([])
+        with open("Square.json", "r", encoding="utf-8") as f:
+            content = json.load(f)
+        self.assertEqual(content, [])
 
     def test_fromJSONString(self):
         """Test for the from_JSON_string method"""

@@ -140,15 +140,19 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(self.r2.to_dictionary(), r1_dictionary)
         self.assertNotEqual(self.r1, self.r2)
 
+    def test_toJsonString(self):
+        """Test for the Base method"""
+
+        """Test with None"""
+        self.assertEqual("[]", Rectangle.to_json_string(None))
+
+        """Test with empty list"""
+        self.assertEqual("[]", Rectangle.to_json_string([]))
+
     def test_saveToFile(self):
         """Test for the save_to_file class method"""
 
-        def setUp(self):
-            """Setup before each test"""
-
-            if os.path.exists("Rectangle.json"):
-                os.remove("Rectangle.json")
-
+        """Normal tests"""
         self.r1 = Rectangle(10, 7, 2, 8)
         self.r2 = Rectangle(2, 4)
 
@@ -160,11 +164,17 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(content, [self.r1.to_dictionary(),
                                    self.r2.to_dictionary()])
 
-        def tearDown(self):
-            """Clean up after each test"""
+        """Test with None"""
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            content = json.load(f)
+        self.assertEqual(content, [])
 
-            if os.path.exists("Rectangle.json"):
-                os.remove("Rectangle.json")
+        """Test with empty list"""
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            content = json.load(f)
+        self.assertEqual(content, [])
 
     def test_fromJSONString(self):
         """Test for the from_JSON_string method"""

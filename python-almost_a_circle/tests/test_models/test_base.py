@@ -42,3 +42,9 @@ class TestBaseClass(unittest.TestCase):
         a_list_of_dict.append(dictionary)
 
         self.assertEqual(a_list_of_dict, revert_from_json)
+
+        """Test with None"""
+        self.assertEqual("[]", Base.to_json_string(None))
+
+        """Test with empty list"""
+        self.assertEqual("[]", Base.to_json_string([]))
