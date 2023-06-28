@@ -62,7 +62,7 @@ class Base:
 
         Returns: nothing
         """
-        
+
         filename = "{}.json".format(cls.__name__)
         a_list = []
         with open(filename, "w", encoding="utf-8") as f:
