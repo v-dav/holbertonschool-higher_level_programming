@@ -72,3 +72,17 @@ class Base:
                     a_list.append(a_dict)
             json_string = cls.to_json_string(a_list)
             f.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """A static method that returns the list
+        of the JSON string representation.
+
+        Args:
+            json_string (str): a string representating a list of
+                dictionaries
+
+        Returns: the list represented by json_string
+        """
+
+        return json.loads(json_string)
