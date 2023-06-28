@@ -4,6 +4,8 @@ import unittest
 from models.rectangle import Rectangle
 from unittest.mock import patch
 import io
+import os
+import json
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -137,3 +139,29 @@ class TestRectangleClass(unittest.TestCase):
 
         self.assertEqual(self.r2.to_dictionary(), r1_dictionary)
         self.assertNotEqual(self.r1, self.r2)
+
+    def test_saveToFile(self):
+        """Test for the save_to_file class method"""
+
+        def setUp(self):
+            """Setup before each test"""
+
+            if os.path.exists("Rectangle.json"):
+                os.remove("Rectangle.json")
+
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+
+        Rectangle.save_to_file([self.r1, self.r2])
+
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            content = json.load(f)
+
+        self.assertEqual(content, [self.r1.to_dictionary(),
+                                   self.r2.to_dictionary()])
+
+        def tearDown(self):
+            """Clean up after each test"""
+
+            if os.path.exists("Rectangle.json"):
+                os.remove("Rectangle.json")

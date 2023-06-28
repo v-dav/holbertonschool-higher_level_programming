@@ -4,6 +4,8 @@ import unittest
 from models.square import Square
 from unittest.mock import patch
 import io
+import os
+import json
 
 
 class TestSquareClass(unittest.TestCase):
@@ -135,3 +137,29 @@ class TestSquareClass(unittest.TestCase):
 
         self.assertEqual(self.s2.to_dictionary(), s1_dictionary)
         self.assertNotEqual(self.s1, self.s2)
+
+    def test_saveToFile(self):
+        """Test for the save_to_file class method"""
+
+        def setUp(self):
+            """Setup before each test"""
+
+            if os.path.exists("Square.json"):
+                os.remove("Square.json")
+
+        self.s1 = Square(10, 7, 2, 8)
+        self.s2 = Square(2, 4)
+
+        Square.save_to_file([self.s1, self.s2])
+
+        with open("Square.json", "r", encoding="utf-8") as f:
+            content = json.load(f)
+
+        self.assertEqual(content, [self.s1.to_dictionary(),
+                                   self.s2.to_dictionary()])
+
+        def tearDown(self):
+            """Clean up after each test"""
+
+            if os.path.exists("Square.json"):
+                os.remove("Square.json")
