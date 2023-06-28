@@ -65,7 +65,7 @@ class Base:
         filename = "{}.json".format(cls.__name__)
         a_list = []
         with open(filename, "w", encoding="utf-8") as json_file:
-            if list_objs is not None and list_objs != []:
+            if list_objs is not None:
                 for obj in list_objs:
                     a_dict = obj.to_dictionary()
                     a_list.append(a_dict)
