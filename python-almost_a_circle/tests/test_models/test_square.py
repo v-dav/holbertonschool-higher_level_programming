@@ -32,7 +32,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(self.r4.id, -6)
 
     def test_raise_errors(self):
-        """Test validation of all the setter methods"""
+        """Test validation of the setter methods"""
 
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             self.r1 = Square(10, "Hello")
@@ -51,6 +51,10 @@ class TestSquareClass(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             self.r8 = Square(10, 10, -5, 0)
+
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            self.s9 = Square(5)
+            self.s9.size = "10"
 
     def test_SquareArea(self):
         """Test to test the Square area calculation"""
