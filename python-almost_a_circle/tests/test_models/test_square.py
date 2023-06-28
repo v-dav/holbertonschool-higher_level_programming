@@ -120,3 +120,18 @@ class TestSquareClass(unittest.TestCase):
             print(self.r1)
             expected_output = "[Square] (100) 4/1 - 7\n"
             self.assertEqual(output.getvalue(), expected_output)
+
+    def test_toDict(self):
+        """Test the to_dictionary method of the Square"""
+
+        self.s1 = Square(10, 2, 1, 300)
+        s1_dictionary = self.s1.to_dictionary()
+        exp_output = {'id': 300, 'x': 2, 'size': 10, 'y': 1}
+
+        self.assertDictEqual(s1_dictionary, exp_output)
+
+        self.s2 = Square(1, 1)
+        self.s2.update(**s1_dictionary)
+
+        self.assertEqual(self.s2.to_dictionary(), s1_dictionary)
+        self.assertNotEqual(self.s1, self.s2)
