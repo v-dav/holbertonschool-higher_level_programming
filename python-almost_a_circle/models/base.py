@@ -2,6 +2,7 @@
 """A module with a simple class"""
 
 import json
+import os
 
 
 class Base:
@@ -104,3 +105,23 @@ class Base:
             dummy = cls(10, 15)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Loads instances of a class from a JSON file and returns a list of
+        those instances.
+
+        Return: The method is returning a list of instances of the class.
+        """
+        list_of_inst = []
+        filename = "{}.json".format(cls.__name__)
+
+        if os.path.exists(filename):
+            with open(filename, "r", encoding="utf-8") as f:
+                json_string = f.read()
+                a_list_of_dict = cls.from_json_string(json_string)
+                for a_dict in a_list_of_dict:
+                    obj = cls.create(**a_dict)
+                    list_of_inst.append(obj)
+        return list_of_inst
