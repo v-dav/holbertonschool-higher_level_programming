@@ -122,3 +122,18 @@ class TestRectangleClass(unittest.TestCase):
             print(self.r1)
             expected_output = "[Rectangle] (89) 1/3 - 4/2\n"
             self.assertEqual(output.getvalue(), expected_output)
+
+    def test_toDict(self):
+        """Test the to_dictionary method of the Rectangle"""
+
+        self.r1 = Rectangle(10, 2, 1, 9, 200)
+        r1_dictionary = self.r1.to_dictionary()
+        exp_output = {'x': 1, 'y': 9, 'id': 200, 'height': 2, 'width': 10}
+
+        self.assertDictEqual(r1_dictionary, exp_output)
+
+        self.r2 = Rectangle(1, 1)
+        self.r2.update(**r1_dictionary)
+
+        self.assertEqual(self.r2.to_dictionary(), r1_dictionary)
+        self.assertNotEqual(self.r1, self.r2)
