@@ -1,53 +1,57 @@
-"""A Python Unit Test for Base class"""
+#!/usr/bin.python3
+"""
+    Module of test
+"""
 
 import unittest
 from models.base import Base
-from models.rectangle import Rectangle
-import json
 
 
-class TestBaseClass(unittest.TestCase):
-    """A unittest class to test the Base Class"""
+class TestBase(unittest.TestCase):
 
     def setUp(self):
-        self.b = Base(5)
+        self.base = Base(12)
 
-    def test_object_noId(self):
-        """Test object creation without providing an ID"""
+    def test_nb_objects(self):
+        # test nb_object before first call
+        Base.__nb_objects = 0
 
-        self.b1 = Base()
-        self.b2 = Base()
-        self.assertEqual(self.b1.id, 1)
-        self.assertEqual(self.b2.id, 2)
+    def test_ID(self):
+        # if id, id = value
+        base = Base(39)
+        self.assertEqual(base.id, 39)
 
-    def test_object_withId(self):
-        """Test object creation while providing an ID"""
+    def test_IDNone(self):
+        # if no id, id = nb_obj
+        base1 = Base()
+        self.assertEqual(base1.id, 1)
 
-        self.b3 = Base(146)
-        self.b4 = Base(0)
-        self.b5 = Base(-5)
-        self.b6 = Base(1000000)
 
-        self.assertEqual(self.b3.id, 146)
-        self.assertEqual(self.b5.id, -5)
-        self.assertEqual(self.b6.id, 1000000)
+class TestBaseStaticMethod(unittest.TestCase):
 
-    def test_toJsonString(self):
-        """Test the static method to_json_string"""
+    def setUp(self):
+        self.base = Base(12)
 
-        self.r1 = Rectangle(10, 7, 2, 8)
-        dictionary = self.r1.to_dictionary()
+    def test_outputTypeToJsonString(self):
+        # test output function is a string
+        list_dict = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
+        self.assertEqual(type(Base.to_json_string(list_dict)), str)
 
-        json_list_of_dict = Base.to_json_string([dictionary])
-        revert_from_json = json.loads(json_list_of_dict)
+    def test_outputEmptyToJsonString(self):
+        # test output function if None as input is a string empty list
+        list_dict = None
+        self.assertEqual(Base.to_json_string(list_dict), '[]')
 
-        a_list_of_dict = []
-        a_list_of_dict.append(dictionary)
+    def test_outputTypeFromJsonString(self):
+        # test output function is a list
+        json_string = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]'
+        self.assertEqual(type(Base.from_json_string(json_string)), list)
 
-        self.assertEqual(a_list_of_dict, revert_from_json)
+    def test_outputEmptyTypeFromJsonString(self):
+        # test output function if None as input is a empty list
+        json_string = None
+        self.assertEqual(Base.from_json_string(json_string), [])
 
-        """Test with None"""
-        self.assertEqual("[]", Base.to_json_string(None))
 
-        """Test with empty list"""
-        self.assertEqual("[]", Base.to_json_string([]))
+if __name__ == '__main__':
+    unittest.main()
