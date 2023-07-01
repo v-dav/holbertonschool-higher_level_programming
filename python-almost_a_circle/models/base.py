@@ -3,6 +3,7 @@
 
 import json
 import os
+import turtle
 
 
 class Base:
@@ -13,7 +14,7 @@ class Base:
     Attributes:
         __nb_objects (int): private class attribute number of instances
         without id provided
-    """
+        """
 
     __nb_objects = 0
 
@@ -28,12 +29,12 @@ class Base:
             for "id", it will be assigned to the object's "id" attribute.
             If no value is provided for "id", a new value will be generated
             and assigned to.
-        """
-        if id is not None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+            """
+            if id is not None:
+                self.id = id
+            else:
+                Base.__nb_objects += 1
+                self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -46,7 +47,7 @@ class Base:
         Returns:
             The JSON representation of a list of dictionaries if it's not
             None and not empty. Otherwise returns a string "[]".
-        """
+            """
 
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
@@ -71,8 +72,8 @@ class Base:
                 for obj in list_objs:
                     a_dict = obj.to_dictionary()
                     a_list.append(a_dict)
-            json_string = cls.to_json_string(a_list)
-            f.write(json_string)
+                    json_string = cls.to_json_string(a_list)
+                    f.write(json_string)
 
     @staticmethod
     def from_json_string(json_string):
@@ -81,7 +82,7 @@ class Base:
 
         Args:
             json_string (str): a string representating a list of
-                dictionaries
+            dictionaries
 
         Returns: the list represented by json_string
         """
@@ -98,13 +99,13 @@ class Base:
         Return:
             The method is returning an instance of the class `cls` with
             the attributes specified in the `dictionary` parameter.
-        """
-        if cls.__name__ == "Square":
-            dummy = cls(15)
-        else:
-            dummy = cls(10, 15)
-        dummy.update(**dictionary)
-        return dummy
+            """
+            if cls.__name__ == "Square":
+                dummy = cls(15)
+            else:
+                dummy = cls(10, 15)
+                dummy.update(**dictionary)
+                return dummy
 
     @classmethod
     def load_from_file(cls):
@@ -124,4 +125,28 @@ class Base:
                 for a_dict in a_list_of_dict:
                     obj = cls.create(**a_dict)
                     list_of_inst.append(obj)
-        return list_of_inst
+                    return list_of_inst
+
+    @classmethod
+    def draw(list_rectangles, list_squares):
+        """A static method that opens a window and draws all the Rectangles and
+        Squares.
+
+    Args:
+        list_rectangles (list): a list of Rectangle instances
+        list_squares (list): a list of Square instances
+
+    Returns: nothing
+    """
+    screen = turtle.Screen()
+    screen.title("A turtle Graphics Screen")
+    screen.setup(600, 600)
+    screen.bgcolor("cyan")
+
+    skk = turtle.Turtle()
+
+    for inst in list_rectangles:
+        r = inst
+        turtle.setpos(r.x, r.y)
+        turtle.forward
+    turtle.done()
