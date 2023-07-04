@@ -1,157 +1,197 @@
 #!/usr/bin/python3
-"""A module with a Rectangle Class"""
+"""Module defining the Rectangle class"""
+
 
 from models.base import Base
 
 
 class Rectangle(Base):
-    """A Rectangle class that inherits from Base class.
-    """
+    """Defines the attributes and methods of the Rectangle class that
+    inherits from Base"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """A constructor method for the Rectangle class
+        """Constructor method for the Rectangle class.
 
         Args:
-            width (int): the width of the Rectangle
-            height (int): the height of the Rectangle
-            x (int): the x position of the Recangle
-            y (int): the y position of the Rectangle
-
-        Raise:
-            TypeError: if one of the is not an integer
+            width (int): Determines the width of the Rectangle instance
+            height (int): Determines the height of the Rectangle instance
+            x (int): Position of the object on the x axis
+            y (int): Position of the object on the y axis
         """
-        super().__init__(id)
+
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
-        """Gets or sets the width of the Rectangle.
-
-        Raise:
-            TypeError: if the width is not an integer.
-            ValueError: if the width is <= 0
-        """
+        """Getter for the 'width' private instance attribute"""
         return self.__width
 
     @width.setter
     def width(self, value):
+        """Sets the width of the Rectangle instance
+
+        Args:
+            value (int): Positive integer
+
+        Raises:
+            TypeError: If value is not an integer
+            ValueError: If value is less than or equal to zero
+        """
         if type(value) is not int:
             raise TypeError("width must be an integer")
+
         if value <= 0:
             raise ValueError("width must be > 0")
+
         self.__width = value
 
     @property
     def height(self):
-        """Gets or sets the height of the Rectangle.
-
-        Raise:
-            TypeError: if the height is not an integer.
-            ValueError: if the height is <= 0
-        """
+        """Getter for the 'height' private instance attribute"""
         return self.__height
 
     @height.setter
     def height(self, value):
+        """Sets the height of the Rectangle instance
+
+        Args:
+            value (int): Positive integer
+
+        Raises:
+            TypeError: If value is not an integer
+            ValueError: If value is less than or equal to zero
+        """
         if type(value) is not int:
             raise TypeError("height must be an integer")
+
         if value <= 0:
             raise ValueError("height must be > 0")
+
         self.__height = value
 
     @property
     def x(self):
-        """Gets or sets the x of the Rectangle.
-
-        Raise:
-            TypeError: if x is not an integer.
-            ValueError: if x is <= 0
-        """
+        """Getter for the 'x' private instance attribute"""
         return self.__x
 
     @x.setter
     def x(self, value):
+        """Sets the x position of the Rectangle instance
+
+        Args:
+            value (int): Positive integer
+
+        Raises:
+            TypeError: If value is not an integer
+            ValueError: If value is less than zero
+        """
         if type(value) is not int:
             raise TypeError("x must be an integer")
+
         if value < 0:
             raise ValueError("x must be >= 0")
+
         self.__x = value
 
     @property
     def y(self):
-        """Gets or sets the y of the Rectangle.
-
-        Raise:
-            TypeError: if y is not an integer.
-            ValueError: if y is <= 0
-        """
+        """Getter for the 'y' private instance attribute"""
         return self.__y
 
     @y.setter
     def y(self, value):
+        """Sets the y position of the Rectangle instance
+
+        Args:
+            value (int): Positive integer
+
+        Raises:
+            TypeError: If value is not an integer
+            ValueError: If value is less than zero
+        """
         if type(value) is not int:
             raise TypeError("y must be an integer")
+
         if value < 0:
             raise ValueError("y must be >= 0")
+
         self.__y = value
 
     def area(self):
-        """
-        Public method that calculates the area of a rectangle object
-        using its width and height.
-
-        Returns: the rectangle area.
-        """
-        return self.__width * self.__height
+        """Computes and returns the area value of the Rectangle instance"""
+        return self.width * self.height
 
     def display(self):
-        """
-        This function displays a rectangle made of '#' characters with
-        a specified height, width, and position.
-        """
-        for ord in range(self.__y):
-            print()
-        for i in range(self.__height):
-            for abs in range(self.__x):
-                print(" ", end="")
-            for j in range(self.__width):
-                print('#', end="")
-            print()
+        """Prints out the Rectangle instance with '#'s"""
+        print("\n" * self.y, end="")
+        for i in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
 
     def __str__(self):
-        """
-        Returns a string representation of a Rectangle object with its id,
-        x and y coordinates, width, and height.
-
-        Returns:
-            A formatted string that represents the rectangle
-        object. The format of the string is
-        "[Rectangle] (id) x/y - width/height".
-        """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
-                                                       self.__y, self.__width,
-                                                       self.__height)
+        """Defines the string representation of a Rectangle instance"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
 
     def update(self, *args, **kwargs):
-        """A public instance method that updates the attributes of an object
-        based on either positional arguments or keyword arguments.
+        """Allows a user to update a Rectangle instance's attributes after
+        it was created.
+
+        Args:
+            id (int, optional): Integer to set the Rectangle instance's id to
+            width (int, optional): New width of the instance
+            height (int, optional): New height of the instance
+            x (int, optional): New x position of the instance
+            y (int, optional): New y position of the instance
+
+            **kwargs (dict): key/value pairs of attributes
         """
-        if args is not None and args != ():
-            attributes = ["id", "width", "height", "x", "y"]
-            for attr, arg in zip(attributes, args):
-                if arg is not None:
-                    setattr(self, attr, arg)
+
+        if args:
+            position = 1
+            for arg in args:
+                if position == 1:
+                    self.id = arg
+                elif position == 2:
+                    self.width = arg
+                elif position == 3:
+                    self.height = arg
+                elif position == 4:
+                    self.x = arg
+                elif position == 5:
+                    self.y = arg
+
+                position += 1
+
         else:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
+            for attr, value in kwargs.items():
+                if attr == "width":
+                    self.width = value
+                elif attr == "height":
+                    self.height = value
+                elif attr == "x":
+                    self.x = value
+                elif attr == "y":
+                    self.y = value
+                elif attr == "id":
+                    self.id = value
 
     def to_dictionary(self):
-        """A public method that returns a formatted
-        dictionary representation of a Rectangle
-        """
-        a_dict = {"x": self.__x, "y": self.__y, "id": self.id,
-                  "height": self.__height, "width": self.__width}
-        return a_dict
+        """Returns the dictionary representation of a Rectangle instance"""
+        my_dict = {}
+        for attr, value in self.__dict__.items():
+            if attr == "id":
+                my_dict["id"] = value
+            elif attr == "_Rectangle__width":
+                my_dict["width"] = value
+            elif attr == "_Rectangle__height":
+                my_dict["height"] = value
+            elif attr == "_Rectangle__x":
+                my_dict["x"] = value
+            elif attr == "_Rectangle__y":
+                my_dict["y"] = value
+        return my_dict

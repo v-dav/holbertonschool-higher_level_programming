@@ -1,84 +1,99 @@
 #!/usr/bin/python3
-"""A module with a Square class"""
+"""Module defining the Square class"""
+
 
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """A class Square that inherits from Rectangle."""
+    """Defines the attributes and methods of the Square class that inherits
+    from Rectangle."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        This is a constructor method for a class that initializes the size,
-        position, and ID of a Square.
+        """Constructor method for the Square class.
 
         Args:
-            size (int): the size of the object being created.
-                It is used to set the width and height of the Square
-
-            x (int): The x-coordinate of the top-left corner of the rectangle.
-                It specifies the horizontal position of the rectangle on
-                the screen. Defaults to 0 (optional)
-
-            y (int): The parameter "y" represents the vertical position of the
-                object on a coordinate plane. In this case, it is being passed
-                as an argument to the parent class constructor along with the
-                size, x position, and id of the object.
-                Defaults to 0 (optional)
-
-            id (int): The "id" parameter is an optional identifier for the
-                object being created. It can be used to uniquely identify
-                the object and differentiate it from other objects of the same
-                class. If no "id" is provided, it will default to None
+            size (int): Determines the size of a Square instance
+            x (int): Position of the square on the x axis
+            y (int): Position of the square on the y axis
+            id (int): id of the Square instance
         """
+
         super().__init__(size, size, x, y, id)
-
-    def __str__(self):
-        """
-        This method allows to print a string representation of a Square object,
-        including its id, x and y coordinates, and width.
-
-        Returns: A formatted string
-        """
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
-                                                 self.y, self.width)
 
     @property
     def size(self):
-        """
-        A property called "size" that returns the value of the "width"
-        attribute and sets both the "width" and "height" attributes
-        to the given value when the "size" property is set.
-
-        Return: The value of the width attribute.
-
-        Raise:
-            TypeError: if the width is not an integer.
-            ValueError: if the width is <= 0
-        """
+        """Getter for the size attribute of a Square instance"""
         return self.width
 
     @size.setter
     def size(self, value):
+        """Setter for the size attribute of a Square instance
+
+        Args:
+            value (int): Positive integer. Defines the size of a square
+
+        Raises:
+            TypeError: If value is not an integer
+            ValueError: If value is less than or equal to zero
+        """
+
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+
+        if value <= 0:
+            raise ValueError("width must be > 0")
+
         self.width = value
         self.height = value
 
+    def __str__(self):
+        """Defines the string representation of a Square object"""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
+                                                 self.y, self.width)
+
     def update(self, *args, **kwargs):
-        """A public instance method that updates the attributes of an object
-        based on either positional arguments or keyword arguments.
-        """
-        if args is not None and args != ():
-            attributes = ["id", "size", "x", "y"]
-            for attr, arg in zip(attributes, args):
-                if arg is not None:
-                    setattr(self, attr, arg)
+        """Allows the user to update a square's attributes after it was
+        created."""
+
+        if args:
+            position = 1
+            for arg in args:
+                if position == 1:
+                    self.id = arg
+                elif position == 2:
+                    self.width = arg
+                    self.height = arg
+                elif position == 3:
+                    self.x = arg
+                elif position == 4:
+                    self.y = arg
+
+                position += 1
+
         else:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
+            for attr, value in kwargs.items():
+                if attr == "size":
+                    self.width = value
+                    self.height = value
+                elif attr == "x":
+                    self.x = value
+                elif attr == "y":
+                    self.y = value
+                elif attr == "id":
+                    self.id = value
 
     def to_dictionary(self):
-        """A public method that returns a formatted
-        dictionary representation of a Square
-        """
-        a_dict = {"id": self.id, "x": self.x, "size": self.width, "y": self.y}
-        return a_dict
+        """Returns the dictionary representation of a square"""
+
+        my_dict = {}
+        for attr, value in self.__dict__.items():
+            if attr == "id":
+                my_dict["id"] = value
+            elif attr == "_Rectangle__width":
+                my_dict["size"] = value
+            elif attr == "_Rectangle__x":
+                my_dict["x"] = value
+            elif attr == "_Rectangle__y":
+                my_dict["y"] = value
+        return my_dict
