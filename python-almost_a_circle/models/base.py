@@ -3,7 +3,6 @@
 
 import json
 import os
-import turtle
 
 
 class Base:
@@ -30,11 +29,11 @@ class Base:
             If no value is provided for "id", a new value will be generated
             and assigned to.
             """
-            if id is not None:
-                self.id = id
-            else:
-                Base.__nb_objects += 1
-                self.id = Base.__nb_objects
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -100,12 +99,12 @@ class Base:
             The method is returning an instance of the class `cls` with
             the attributes specified in the `dictionary` parameter.
             """
-            if cls.__name__ == "Square":
-                dummy = cls(15)
-            else:
-                dummy = cls(10, 15)
-                dummy.update(**dictionary)
-                return dummy
+        if cls.__name__ == "Square":
+            dummy = cls(15)
+        else:
+            dummy = cls(10, 15)
+            dummy.update(**dictionary)
+            return dummy
 
     @classmethod
     def load_from_file(cls):
@@ -126,27 +125,3 @@ class Base:
                     obj = cls.create(**a_dict)
                     list_of_inst.append(obj)
                     return list_of_inst
-
-    @classmethod
-    def draw(list_rectangles, list_squares):
-        """A static method that opens a window and draws all the Rectangles and
-        Squares.
-
-    Args:
-        list_rectangles (list): a list of Rectangle instances
-        list_squares (list): a list of Square instances
-
-    Returns: nothing
-    """
-    screen = turtle.Screen()
-    screen.title("A turtle Graphics Screen")
-    screen.setup(600, 600)
-    screen.bgcolor("cyan")
-
-    skk = turtle.Turtle()
-
-    for inst in list_rectangles:
-        r = inst
-        turtle.setpos(r.x, r.y)
-        turtle.forward
-    turtle.done()
