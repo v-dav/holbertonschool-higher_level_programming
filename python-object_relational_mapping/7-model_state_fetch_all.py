@@ -15,9 +15,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    """Query the databse and format output"""
+    """Query the database and format output"""
     states = session.query(State).order_by(State.id)
     for state in states:
         print("{}: {}".format(state.id, state.name))
 
+    """Close the session"""
     session.close()
