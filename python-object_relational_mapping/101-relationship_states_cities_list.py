@@ -18,10 +18,10 @@ if __name__ == "__main__":
     session = Session()
 
     """Create query and format output"""
-    states = session.query(State).all()
+    states = session.query(State).order_by(State.id)
     for state in states:
         print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
+        for city in sorted(state.cities, key=lambda city: city.id):
             print("\t{}: {}".format(city.id, city.name))
 
     """Close session"""
