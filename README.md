@@ -7,8 +7,3 @@ This repository is a collection of numerous repositories, each of which focuses 
 ## Purpose
 The aim of this repository is to provide an easy-to-follow, structured, and comprehensive path to learning high-level programming languages.
 
-## Learning Path
-**1. Python:** Starting with one of the most user-friendly high-level programming languages
-
-Other languages will be added in the future.
-
